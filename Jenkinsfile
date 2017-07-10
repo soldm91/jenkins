@@ -1,11 +1,13 @@
 pipeline {
   agent any
   stages {
-    stage('Terraform Init') {
+    stage('Create subnet') {
       steps {
-        echo 'Executing terraform init'
-        sh '''cd /home/ec2-user/terraform/newSubnet
-terraform init'''
+        echo 'creating subnet'
+        sh 'cp -f /home/ec2-user/terraform/newSubnet/newSubnet.tf'
+        sh 'terraform init'
+        sh 'terraform plan'
+        sh 'terraform apply'
       }
     }
   }
