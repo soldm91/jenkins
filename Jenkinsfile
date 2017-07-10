@@ -4,8 +4,7 @@ pipeline {
     stage('Create subnet') {
       steps {
         echo 'creating subnet'
-        sh '''id
-cp -f /home/ec2-user/terraform/newSubnet/newSubnet.tf newSubnet.tf'''
+        sh 'cp -f /tmp/newSubnet.tf newSubnet.tf'
         sh 'terraform init'
         sh 'terraform plan'
         sh 'terraform apply'
