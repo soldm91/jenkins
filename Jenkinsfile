@@ -20,7 +20,7 @@ pipeline {
     stage('Destroy') {
       steps {
         echo 'destroying'
-        sh 'terraform -force destroy || true'
+        sh 'terraform destroy -force || true'
       }
     }
   }
