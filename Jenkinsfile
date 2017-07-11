@@ -4,16 +4,16 @@ pipeline {
     stage('Create subnet') {
       steps {
         echo 'creating subnet'
-        sh 'cp -f /tmp/newSubnet.tf newSubnet.tf'
-        sh 'terraform init'
-        sh 'terraform plan'
-        sh 'terraform apply'
+        sh '''cp -f /tmp/terraform/newSubnet.tf newSubnet.tf
+terraform init
+terraform plan
+terraform apply'''
       }
     }
-    stage('Sleep 5 Minutes') {
+    stage('Sleep 3 Minutes') {
       steps {
         echo 'Sleeping'
-        sleep(time: 5, unit: 'MINUTES')
+        sleep(time: 3, unit: 'MINUTES')
         echo 'done sleeping'
       }
     }
