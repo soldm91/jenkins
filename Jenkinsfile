@@ -4,8 +4,9 @@ pipeline {
     stage('Create subnet') {
       steps {
         echo 'creating subnet'
-        sh '''cp -f /var/lib/jenkins/variables/variables.tf variables.tf
-cp -f /tmp/terraform/newSubnet.tf newSubnet.tf
+        sh '''(cd /var/lib/jenkins/terraformPractice/; git pull)
+cp -f /var/lib/jenkins/variables/variables.tf variables.tf
+cp -f /var/lib/jenkins/terraformPractice/newSubnet.tf newSubnet.tf
 terraform init
 terraform plan
 terraform apply'''
